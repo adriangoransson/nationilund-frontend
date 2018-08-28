@@ -1,1 +1,3 @@
-http://nationilund.netlify.com/* http://nationilund.se/:splat 301!
+https://nationilund.netlify.com/* https://nationilund.se/:splat 301!
+http://nationilund.netlify.com/* https://nationilund.se/:splat 301!
+/api/*  https://api.nationilund.se/:splat  200
