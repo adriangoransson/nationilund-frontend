@@ -1,3 +1,3 @@
 export default {
-  API_URL: '/api/day',
+  API_URL: 'https://api.nationilund.se/day',
 };
