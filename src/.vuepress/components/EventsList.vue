@@ -10,12 +10,13 @@
 </template>
 
 <script>
-import { dateRegex, apiDateFormat } from '../utils';
+import { validDate, apiDateFormat } from '../utils';
 
 export default {
   data() {
     return {
       loading: false,
+      currentPromise: null,
       events: [],
       date: apiDateFormat(new Date()),
     };
@@ -25,43 +26,67 @@ export default {
     '$route': 'routeChange',
   },
 
+  computed: {
+    urlDate() {
+      return this.$route.query.d;
+    },
+
+    validURL() {
+      return validDate(this.urlDate);
+    },
+  },
+
   created() {
-    this.setURL(this.$route.query.d);
-    this.load();
+    this.loadIfValidURL();
   },
 
   methods: {
-    load() {
-      if (this.loading) { return; }
-
+    async load() {
       this.loading = true;
-      fetch(`https://api.nationilund.se/day/${this.date}`)
-        .then(d => d.json())
-        .then((d) => {
-          this.events = d;
-          this.loading = false;
-        })
-        .finally(() => {
-          this.loading = false;
-        });
-    },
+      const promise = fetch(`https://api.nationilund.se/day/${this.date}`);
 
-    setURL(date) {
-      if (dateRegex.test(date)) {
-        this.date = date;
-      } else {
-        this.$router.replace({
-          to: '/',
-          query: {
-            d: this.date,
-          },
-        });
+      this.currentPromise = promise;
+
+      let data;
+      try {
+        data = await promise;
+      } catch (error) {
+        this.error = error;
+        this.loading = false;
+      }
+
+      // Disregard if the response isn't for our latest request
+      if (promise === this.currentPromise) {
+        try {
+          this.events = await data.json();
+        } catch (error) {
+          this.error = error;
+        } finally {
+          this.loading = false;
+        }
       }
     },
 
+    loadIfValidURL() {
+      if (this.validURL) {
+        this.date = this.urlDate;
+        this.load();
+      } else {
+        this.setURL(apiDateFormat(new Date()));
+      }
+    },
+
+    setURL(date) {
+      this.$router.replace({
+        to: '/',
+        query: {
+          d: date,
+        },
+      });
+    },
+
     routeChange() {
-      this.setURL(this.$route.query.d);
-      this.load();
+      this.loadIfValidURL();
     },
 
     dateChange(date) {
