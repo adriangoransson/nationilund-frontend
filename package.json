@@ -1,23 +1,19 @@
 {
-  "dependencies": {
-    "date-fns": "^1.29.0",
-    "mithril": "^1.1.5",
-    "pikaday": "https://github.com/adriangoransson/Pikaday"
-  },
+  "name": "nationilund-frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "start": "webpack -d",
-    "watch": "webpack -d --watch",
-    "build": "rm -rf dist && webpack -p && cp public/* dist"
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^4.10.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-google": "^0.9.1",
-    "eslint-loader": "^1.9.0",
-    "eslint-plugin-import": "^2.8.0",
-    "webpack": "^3.8.1"
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "vuepress": "^0.14.2"
+  },
+  "dependencies": {
+    "date-fns": "^1.29.0",
+    "flatpickr": "^4.5.1"
   }
 }
