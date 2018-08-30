@@ -13,7 +13,7 @@ Go library to parse data from studentlund.se.
 [adriangoransson/nationilund-api](https://github.com/adriangoransson/nationilund-api)  
 The [api](/api.md) that powers this site. Written in Go using the Gin framework.  
 
-[adriangoransson/nationilund-frontend](https://github.com/adriangoransson/nationilund-api)  
+[adriangoransson/nationilund-frontend](https://github.com/adriangoransson/nationilund-frontend)  
 This site. Static site with dynamic front page. Built with Vuepress.  
 The fantastic design is by my good friend [Fabian Lindfors](https://fabianlindfors.se/).
 
