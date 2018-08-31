@@ -106,12 +106,12 @@ main code {
 
 main pre {
   margin-bottom: 1em;
-  overflow: scroll;
   margin-left: -$container-margin;
   margin-right: -$container-margin;
 }
 
 main pre code {
+  overflow: auto;
   display: block;
   padding: 10px $container-margin;
 }
