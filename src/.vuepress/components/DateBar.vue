@@ -1,6 +1,6 @@
 <template>
   <div class="date-bar">
-    <date-picker :date="date" @change="$emit('change', $event)" />
+    <DatePicker :date="date" @change="$emit('change', $event)" />
     <div class="date-navigation">
       <div class="link-wrapper">
         <a @click="setDate(-1)" class="date previous-date">{{ previousDay }}</a>

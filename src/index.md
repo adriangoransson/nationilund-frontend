@@ -3,5 +3,5 @@ home: true
 ---
 
 <ClientOnly>
-  <events-list />
+  <EventsList />
 </ClientOnly>

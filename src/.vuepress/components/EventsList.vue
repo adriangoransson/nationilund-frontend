@@ -1,8 +1,8 @@
 <template>
   <div>
-    <date-bar :date="date" @change="dateChange($event)" />
+    <DateBar :date="date" @change="dateChange($event)" />
 
-    <loading-indicator v-if="loading" />
+    <LoadingIndicator v-if="loading" />
 
     <p v-else-if="this.error" class="centered">Error!<br>{{ this.error }}</p>
 
