@@ -3,9 +3,9 @@
     <DatePicker :date="date" @change="$emit('change', $event)" />
     <div class="date-navigation">
       <div class="link-wrapper">
-        <a @click="setDate(-1)" class="date previous-date">{{ previousDay }}</a>
-        <span class="date current-date">{{ currentDay }}</span>
-        <a @click="setDate(+1)" class="date next-date">{{ nextDay }}</a>
+        <a @click="setDate(-1)" class="date previous-date">{{ relativeDate(-1) }}</a>
+        <span class="date current-date">{{ relativeDate() }}</span>
+        <a @click="setDate(+1)" class="date next-date">{{ relativeDate(1) }}</a>
       </div>
     </div>
   </div>
@@ -21,21 +21,13 @@ export default {
     date: String,
   },
 
-  computed: {
-    currentDay() {
-      return this.d(this.date);
-    },
-
-    nextDay() {
-      return this.d(addDays(this.date, 1));
-    },
-
-    previousDay() {
-      return this.d(addDays(this.date, -1));
-    }
-  },
-
   methods: {
+    // For server rendering
+    relativeDate(increment = 0) {
+      const date = this.date !== null ? this.date : new Date();
+      return this.d(addDays(date, increment));
+    },
+
     d(date) {
       const diff = differenceInCalendarDays(date, new Date());
       switch (diff) {
