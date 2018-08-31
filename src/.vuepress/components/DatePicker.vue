@@ -21,7 +21,9 @@ export default {
   },
 
   mounted() {
+    flatpickr.l10ns.default.firstDayOfWeek = 1;
     this.picker = flatpickr(this.$refs.button, {
+      weekNumbers: true,
       disableMobile: true,
       defaultDate: this.date,
       onChange: (selected, dateStr) => {
