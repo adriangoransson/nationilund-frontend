@@ -1,14 +1,6 @@
 <template>
-  <div>
-    <DateBar :date="date" @change="dateChange($event)" />
-
-    <LoadingIndicator v-if="loading" />
-
-    <p v-else-if="this.error" class="centered">Error!<br>{{ this.error }}</p>
-
-    <div v-else class="events">
-      <event v-for="event in events" :key="event.id" :data="event" />
-    </div>
+  <div class="events">
+    <event v-for="event in events" :key="event.id" :data="event" />
   </div>
 </template>
 
@@ -27,38 +19,34 @@ const apiError = (status) => {
 };
 
 export default {
+  props: {
+    date: String,
+  },
+
   data() {
     return {
-      loading: false,
       currentPromise: null,
       events: [],
-      error: null,
-      date: apiDateFormat(new Date()),
     };
   },
 
   watch: {
-    '$route': 'routeChange',
-  },
-
-  computed: {
-    urlDate() {
-      return this.$route.query.d;
-    },
-
-    validURL() {
-      return validDate(this.urlDate);
-    },
+    'date': 'load',
   },
 
   created() {
-    this.loadIfValidURL();
+    this.load();
   },
 
   methods: {
     async load() {
-      this.loading = true;
-      this.error = null;
+      if (!this.date) {
+        console.log('No date set');
+        return;
+      }
+
+      this.$emit('loading', true);
+      this.$emit('error', null);
 
       const promise = fetch(`https://api.nationilund.se/day/${this.date}`);
 
@@ -68,13 +56,13 @@ export default {
       try {
         response = await promise;
       } catch (error) {
-        this.error = error;
-        this.loading = false;
+        this.$emit('error', error);
+        this.$emit('loading', false);
       }
 
       if (!response.ok) {
-        this.error = `${apiError(response.status)} (HTTP status code ${response.status})`;
-        this.loading = false;
+        this.$emit('error', `${apiError(response.status)} (HTTP status code ${response.status})`);
+        this.$emit('loading', false);
         return;
       }
 
@@ -83,43 +71,11 @@ export default {
         try {
           this.events = await response.json();
         } catch (error) {
-          console.log(error);
-          this.error = error;
+          this.$emit('error', error);
         } finally {
-          this.loading = false;
+          this.$emit('loading', false);
         }
       }
-    },
-
-    loadIfValidURL() {
-      if (this.validURL) {
-        this.date = this.urlDate;
-        this.load();
-      } else {
-        this.setURL(apiDateFormat(new Date()));
-      }
-    },
-
-    setURL(date) {
-      this.$router.replace({
-        to: '/',
-        query: {
-          d: date,
-        },
-      });
-    },
-
-    routeChange() {
-      this.loadIfValidURL();
-    },
-
-    dateChange(date) {
-      this.$router.push({
-        to: '/',
-        query: {
-          d: date,
-        },
-      });
     },
   },
 };
