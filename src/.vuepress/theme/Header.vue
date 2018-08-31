@@ -2,7 +2,7 @@
   <header>
     <div class="container">
       <router-link to="/" class="logo">
-        <img class="logo" src="./assets/logo.svg" :alt="$siteTitle">
+        <img class="logo" src="/logo.svg" :alt="$siteTitle">
       </router-link>
 
       <nav class="menu">
