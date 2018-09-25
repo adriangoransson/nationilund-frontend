@@ -15,6 +15,12 @@ These routes are IP limited to 30 requests/minute.
     GET /week/YYYY-MM-DD
     GET /month/YYYY-MM-DD
 
+### Filtering
+
+By default, the API will filter out events not hosted by a nation.
+
+In order to retrieve the unfiltered data from Studentlund: pass the `all` query parameter with a non-empty value.
+
 ## Response
 A JSON list of event objects.
 
