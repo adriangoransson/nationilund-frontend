@@ -1,10 +1,18 @@
 <template>
   <div class="events">
+    <div
+      v-if="filteredAmount > 0"
+      @click="filter = false"
+      class="event centered"
+    >
+      {{ filteredAmount }} earlier events
+    </div>
     <event v-for="event in events" :key="event.id" :data="event" />
   </div>
 </template>
 
 <script>
+import isToday from 'date-fns/is_today';
 import { validDate, apiDateFormat } from '../utils';
 
 const apiError = (status) => {
@@ -26,16 +34,38 @@ export default {
   data() {
     return {
       currentPromise: null,
-      events: [],
+      data: [],
+      filter: isToday(this.date),
     };
   },
 
   watch: {
-    'date': 'load',
+    date() {
+      this.filter = isToday(this.date);
+      this.load();
+    },
   },
 
   created() {
     this.load();
+  },
+
+  computed: {
+    filteredAmount() {
+      return this.data.length - this.events.length;
+    },
+
+    events() {
+      if (this.filter) {
+        const filtered = this.data.filter(event => Date.parse(event.date.end) > new Date());
+
+        if (filtered.length) {
+          return filtered;
+        }
+      }
+
+      return this.data;
+    },
   },
 
   methods: {
@@ -69,7 +99,7 @@ export default {
       // Disregard if the response isn't for our latest request
       if (promise === this.currentPromise) {
         try {
-          this.events = await response.json();
+          this.data = await response.json();
         } catch (error) {
           this.$emit('error', error);
         } finally {

@@ -1,7 +1,11 @@
 <template>
   <div class="event" :class="classList" @click="toggleOpen">
     <div class="content">
-      <p class="time">{{ startTime }} - {{ endTime }} @ {{ data.organizer.name }}</p>
+      <p class="header">
+        <span class="time">
+          {{ startTime }} - {{ endTime }}
+        </span>
+        @ {{ data.organizer.name }}</p>
       <h1 class="title">{{ data.summary }}</h1>
       <span class="plus"></span>
     </div>
