@@ -5,7 +5,7 @@
         <span class="time">
           {{ startTime }} - {{ endTime }}
         </span>
-        @ {{ data.organizer.name }}</p>
+        – {{ data.organizer.name }}</p>
       <h1 class="title">{{ data.summary }}</h1>
       <span class="plus"></span>
     </div>
