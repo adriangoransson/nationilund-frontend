@@ -8,6 +8,10 @@
       {{ filteredAmount }} earlier events
     </div>
     <event v-for="event in events" :key="event.id" :data="event" />
+
+    <p v-if="!events.length" class="centered">
+      No events 😔
+    </p>
   </div>
 </template>
 
