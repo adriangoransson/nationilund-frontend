@@ -4,14 +4,14 @@
 
     <LoadingIndicator v-if="loading" />
 
-    <p v-else-if="this.error" class="centered">
+    <p v-else-if="this.error" class="centered error">
       Error!<br>
       {{ this.error }}
     </p>
 
     <ClientOnly>
       <EventsList
-        v-if="date"
+        v-if="date && !this.error"
         v-show="!loading"
         :date="date"
         @loading="loading = $event"
@@ -52,6 +52,7 @@ export default {
     },
 
     dateChanged(date) {
+      this.error = null;
       this.$router.push({
         to: '/',
         query: {
@@ -75,3 +76,9 @@ export default {
   },
 };
 </script>
+
+<style>
+  .error {
+    padding: 20px 0;
+  }
+</style>
