@@ -5,7 +5,7 @@
       @click="filter = false"
       class="event centered"
     >
-      {{ filteredAmount }} earlier events
+      {{ filteredAmount }} earlier {{ filteredAmount === 1 ? 'event' : 'events' }}
     </div>
     <event v-for="event in events" :key="event.id" :data="event" />
 
