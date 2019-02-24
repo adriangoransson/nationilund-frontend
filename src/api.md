@@ -51,9 +51,8 @@ A JSON list of event objects.
 
 In case of errors the API response will have one of the following status codes.
 
-| Status code | Description                                                                        |
-| ----------- | ---------------------------------------------------------------------------------- |
-| 400         | Date was incorrectly formatted.                                                    |
-| 429         | Rate limit exceeded.                                                               |
-| 502         | Gateway timeout. Most likely because studentlund did not respond within 6 seconds. |
-| 503         | Internal fetching of data failed.                                                  |
+| Status code | Description                       |
+| ----------- | --------------------------------- |
+| 400         | Date was incorrectly formatted.   |
+| 429         | Rate limit exceeded.              |
+| 503         | Internal fetching of data failed. |

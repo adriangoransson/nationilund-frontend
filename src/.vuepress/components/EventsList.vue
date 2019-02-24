@@ -26,7 +26,7 @@ const apiError = (status) => {
     case 429:
       return `Take it easy! Your IP is doing too many requests right now.`
     case 502:
-      return 'Gateway timeout. Maybe studentlund.se is down?';
+      return 'Bad API response. Maybe studentlund.se is down?';
     case 503:
       return 'Looks like the api is having trouble serving your data.';
   }
