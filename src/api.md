@@ -3,7 +3,6 @@
 Base URL `https://api.nationilund.se`
 
 Get events for a specific date, or the week/month that date occurs.  
-These routes are IP limited to 30 requests/minute.
 
     GET /day/YYYY-MM-DD
     GET /week/YYYY-MM-DD
