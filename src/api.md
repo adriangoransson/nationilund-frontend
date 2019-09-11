@@ -51,7 +51,7 @@ In case of errors the API response will have one of the following status codes.
 | 503         | Internal fetching of data failed. |
 
 ### Deprecated endpoints
-These still work, but are unsupported and <strong>might be removed at any time</strong>.
+These still work, but are unsupported and **might be removed at any time**.
 
 Get events for today, this week or this month.
 
