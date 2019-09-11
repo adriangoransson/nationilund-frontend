@@ -19,12 +19,12 @@ A JSON list of event objects.
 
     [
         {
-            id              string
-            summary         string
-            description     string
-            url             string
-            image_url       string
-            location        string
+            id                string
+            summary           string
+            description       string
+            url               string
+            image_url         string
+            location          string
 
             organizer {
                 name          string
