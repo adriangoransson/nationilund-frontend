@@ -2,12 +2,6 @@
 
 Base URL `https://api.nationilund.se`
 
-Get events for today, this week or this month.
-
-    GET /day
-    GET /week
-    GET /month
-
 Get events for a specific date, or the week/month that date occurs.  
 These routes are IP limited to 30 requests/minute.
 
@@ -56,3 +50,12 @@ In case of errors the API response will have one of the following status codes.
 | 400         | Date was incorrectly formatted.   |
 | 429         | Rate limit exceeded.              |
 | 503         | Internal fetching of data failed. |
+
+### Deprecated endpoints
+These still work, but are unsupported and <strong>might be removed at any time</strong>.
+
+Get events for today, this week or this month.
+
+    GET /day
+    GET /week
+    GET /month
