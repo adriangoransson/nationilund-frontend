@@ -2,7 +2,7 @@
   <div class="events">
     <div
       v-if="filteredAmount > 0"
-      @click="filter = false"
+      @click="filterDisabled = true"
       class="event centered"
     >
       {{ filteredAmount }} earlier {{ filteredAmount === 1 ? 'event' : 'events' }}
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import isToday from 'date-fns/is_today';
+import { isToday, parseISO } from 'date-fns';
 import { validDate, apiDateFormat } from '../utils';
 
 const apiError = (status) => {
@@ -41,13 +41,13 @@ export default {
     return {
       currentPromise: null,
       data: [],
-      filter: isToday(this.date),
+      filterDisabled: false,
     };
   },
 
   watch: {
     date() {
-      this.filter = isToday(this.date);
+      this.filterDisabled = false;
       this.load();
     },
   },
@@ -57,6 +57,14 @@ export default {
   },
 
   computed: {
+    filter() {
+      if (this.filterDisabled) {
+        return false;
+      }
+
+      return isToday(parseISO(this.date));
+    },
+
     filteredAmount() {
       return this.data.length - this.events.length;
     },

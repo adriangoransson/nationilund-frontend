@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { parseISO } from 'date-fns';
 import { validDate, apiDateFormat } from '../utils';
 
 export default {

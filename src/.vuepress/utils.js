@@ -1,14 +1,14 @@
-import format from 'date-fns/format';
+import { format } from 'date-fns';
 
 const dateRegex = RegExp(/^(\d{4})-(\d{2})-(\d{2})$/);
 
 export const validDate = date => dateRegex.test(date);
 
-export const apiDateFormat = date => format(date, 'YYYY-MM-DD');
+export const apiDateFormat = date => format(date, 'yyyy-MM-dd');
 
 export const formatHours = date => format(date, 'HH:mm');
 
-export const formatDate = date => format(date, 'MMM D',);
+export const formatDate = date => format(date, 'MMM d',);
 
 export function slugify(text) {
   return text.toString().toLowerCase()

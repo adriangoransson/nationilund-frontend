@@ -12,8 +12,7 @@
 </template>
 
 <script>
-import addDays from 'date-fns/add_days';
-import differenceInCalendarDays from 'date-fns/difference_in_calendar_days'
+import { addDays, differenceInCalendarDays, parseISO } from 'date-fns';
 import { formatDate, apiDateFormat } from '../utils';
 
 export default {
@@ -24,7 +23,7 @@ export default {
   methods: {
     // For server rendering
     relativeDate(increment = 0) {
-      const date = this.date !== null ? this.date : new Date();
+      const date = this.date !== null ? parseISO(this.date) : new Date();
       return this.d(addDays(date, increment));
     },
 
@@ -44,7 +43,7 @@ export default {
     },
 
     setDate(increment) {
-      this.$emit('change', apiDateFormat(addDays(this.date, increment)));
+      this.$emit('change', apiDateFormat(addDays(parseISO(this.date), increment)));
     },
   },
 };
