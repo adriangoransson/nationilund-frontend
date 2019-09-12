@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import { parseISO } from 'date-fns';
 import { validDate, apiDateFormat } from '../utils';
 
 export default {
@@ -38,7 +37,7 @@ export default {
     '$route': 'routeChanged',
   },
 
-  created() {
+  beforeMount() {
     this.validateRoute();
   },
 
