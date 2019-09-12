@@ -17,7 +17,6 @@
 
 <script>
 import { isToday, parseISO } from 'date-fns';
-import { validDate, apiDateFormat } from '../utils';
 
 const apiError = (status) => {
   switch (status) {
