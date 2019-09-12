@@ -36,4 +36,4 @@ export default {
 };
 </script>
 
-<style src="./style/theme.scss"></style>
+<style lang="scss" src="./style/theme.scss"></style>

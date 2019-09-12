@@ -8,13 +8,11 @@
     "build": "vuepress build src"
   },
   "devDependencies": {
-    "node-sass": "^4.9.3",
-    "sass-loader": "^7.1.0",
-    "vuepress": "^0.14.2"
-  },
-  "dependencies": {
     "date-fns": "^1.29.0",
     "flatpickr": "^4.5.1",
-    "nprogress": "^0.2.0"
+    "node-sass": "^4.12.0",
+    "nprogress": "^0.2.0",
+    "sass-loader": "^8.0.0",
+    "vuepress": "^1.0.4"
   }
 }
