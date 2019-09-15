@@ -50,7 +50,8 @@ In case of errors the API response will have one of the following status codes.
 | 429         | Rate limit exceeded.              |
 | 503         | Internal fetching of data failed. |
 
-### Deprecated endpoints
+
+## Deprecated endpoints
 These still work, but are unsupported and **might be removed at any time**.
 
 Get events for today, this week or this month.
