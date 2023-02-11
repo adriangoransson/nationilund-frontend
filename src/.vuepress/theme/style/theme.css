@@ -1,5 +1,3 @@
-$container-margin: 15px;
-
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Source+Code+Pro');
 
 * {
@@ -113,14 +111,14 @@ main code {
 
 main pre {
   margin-bottom: 1em;
-  margin-left: -$container-margin;
-  margin-right: -$container-margin;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 main pre code {
   overflow: auto;
   display: block;
-  padding: 10px $container-margin;
+  padding: 10px 15px;
 }
 
 main table {
@@ -146,8 +144,8 @@ main td {
   border-bottom: 1px solid #F3F3F3;
   display: flex;
   font-size: 14px;
-  margin-left: -$container-margin;
-  margin-right: -$container-margin;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 .date-bar .date-picker-button {
@@ -203,7 +201,7 @@ main td {
   border-top: 4px solid #FCDA5A;
   cursor: pointer;
   margin-bottom: 20px;
-  padding: 15px $container-margin;
+  padding: 15px 15px;
 }
 
 /* Default yellow for `.events .event.vastgota-nation` */
@@ -376,7 +374,7 @@ main td {
 
   .events {
     padding: 20px 0;
-    margin-left: -$container-margin;
-    margin-right: -$container-margin;
+    margin-left: -15px;
+    margin-right: -15px;
   }
 }
