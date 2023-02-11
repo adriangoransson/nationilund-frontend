@@ -8,8 +8,8 @@
     "build": "vuepress build src"
   },
   "devDependencies": {
-    "date-fns": "^2.1.0",
-    "flatpickr": "^4.5.1",
-    "vuepress": "^1.0.4"
+    "date-fns": "^2.29.3",
+    "flatpickr": "^4.6.13",
+    "vuepress": "^1.9.8"
   }
 }
