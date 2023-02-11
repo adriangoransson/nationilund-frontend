@@ -91,7 +91,7 @@ export default {
       this.$emit('loading', true);
       this.$emit('error', null);
 
-      const promise = fetch(`https://api.nationilund.se/day/${this.date}`);
+      const promise = fetch(`https://qibf0o2lib.execute-api.eu-north-1.amazonaws.com/production/day/${this.date}`);
 
       this.currentPromise = promise;
 

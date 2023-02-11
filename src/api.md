@@ -1,6 +1,6 @@
 # API
 
-Base URL `https://api.nationilund.se`
+Base URL `https://qibf0o2lib.execute-api.eu-north-1.amazonaws.com/production`
 
 Get events for a specific date, or the week/month that date occurs.  
 

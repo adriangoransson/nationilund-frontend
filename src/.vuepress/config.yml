@@ -3,8 +3,6 @@ description: Find out what's happening at the student nations in Lund tonight!
 
 head:
   -
-    [ link, { rel: preconnect, href: "https://api.nationilund.se" } ]
-  -
     [ meta, { property: "og:image", content: "https://nationilund.se/logo.png" } ]
   -
     [ meta, { name: "twitter:image:src", content: "https://nationilund.se/logo.png" } ]
